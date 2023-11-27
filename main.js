@@ -373,23 +373,37 @@
 //   }
 // }
 
-function checkIfPassed(marks){
-	return new Promise((resolve, reject)=>{
-    if (marks>400){
-      resolve("You will get cake")
-    }else{
-      reject("You need to pull up your socks")
-    }
-  })
-}
+// function checkIfPassed(marks){
+// 	return new Promise((resolve, reject)=>{
+//     if (marks>400){
+//       resolve("You will get cake")
+//     }else{
+//       reject("You need to pull up your socks")
+//     }
+//   })
+// }
 
 // checkIfPassed(399).then((e) => console.log(e)).catch((error) => console.log(error))
 
+// async function getData(){
+//   try{
+//     const data = await checkIfPassed(300)
+//     console.log(data)
+//   }catch(error){
+//     console.log(error)
+//   }
+// }
+
+// getData()
+
 async function getData(){
   try{
-    const data = await checkIfPassed(300)
+    const response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+
+    const data = await response.json()
+
     console.log(data)
-  }catch(error){
+  } catch(error){
     console.log(error)
   }
 }
